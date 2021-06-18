@@ -62,3 +62,61 @@ var userQuestions=[
 
  
 ]
+
+var score=0;
+
+function play(question,answer){
+  var userAns=readlineSync.question(chalk.bold.red(question));
+  if(userAns.toLowerCase()===answer){
+    console.log(chalk.yellowBright("You are right!\n"));
+    score=score+1;
+  }
+  else{
+    console.log(chalk.blueBright("You are wrong!\n"))
+  }
+}
+
+
+for(i=0;i<userQuestions.length;i++){
+  play(userQuestions[i].question,userQuestions[i].answer);
+
+}
+
+
+if(score>highScores.scoreTwo){
+    console.log(chalk.yellowBright("Your final score is "+score));
+
+    console.log(chalk.red.bgYellowBright.bold("\nCongratulations on completing\nLEVEL 1!\n"));
+
+    console.log(chalk.yellowBright("The high scores are:\n"+highScores.first+"\n"+highScores.second+"\n"));
+
+    console.log(chalk.red.bgYellowBright.bold("Please send a screenshot of your\nhigh score."));
+  }
+
+else{
+ if(score===highScores.scoreTwo){
+  console.log(chalk.yellowBright("6/7! Outstanding!\nHermoine,is that you?"));
+
+  console.log(chalk.yellowBright("\nThe high scores are:\n"+highScores.first+"\n"+highScores.second));
+
+  console.log(chalk.yellowBright.bold("\nPlease send a screenshot of\nyour high score.\n"));
+  
+ }
+ else{
+   
+   console.log(boxen(("Your score is "+ score+"!"+"\nLet's try again to beat the\nhigh scores."),{backgroundColor:"gray",borderstyle:"round",padding:1,borderColor:"yellow"}));
+
+   console.log(chalk.yellowBright("The high scores are:\n"+highScores.first+"\n"+highScores.second+"\n"));
+   
+ }
+
+ }
+
+ if(score<7){
+   console.log(chalk.yellowBright.bold("Answer all the seven questions\ncorrectly to get to LEVEL 2!"));
+
+   console.log(chalk.yellowBright.bold("Let\'s go!!"))
+  
+ }
+
+ 
