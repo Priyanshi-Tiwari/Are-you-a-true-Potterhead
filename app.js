@@ -119,4 +119,86 @@ else{
   
  }
 
- 
+ else{
+  
+    readlineSync.keyInYN(chalk.bold.red('\nNow are you ready for LEVEL 2?\n\nPress \'y\' for yes and \'n\' for no\n\n'))
+    // 'Y' key was pressed.
+    console.log(chalk.bold.red("\nLet\'s get in!\n"))
+    
+    console.log(boxen(('LEVEL 2'),{backgroundColor:"gray",borderstyle:"round",padding:1,borderColor:"yellow"}));
+  
+  
+  
+  
+  console.log(chalk.yellowBright("\nThis level will be yes or no questions\n"));
+  console.log(chalk.yellowBright("So press \'y\' for yes and \'n\' for no\n"));
+  var newScore=0;
+  
+  var newQues=[
+  
+    {
+       question:"--> Aragog is the name of Hagrid\’s\npet,a giant spider.\n",
+    
+      answer:true
+    },
+  
+    {
+      
+      question:"--> The name of the phoenix which was\nAlbus Dumbledore\’s animal companion\nand defender was Fawkes\n",
+    
+      answer:true
+    },
+  
+    {
+      question:"--> Sirius Black was usually referred\nto as Wormtail or Scabbers.\n",
+      
+      answer:false
+    },
+  
+    {
+      question:"--> At the age of 11 harry potter\njoined Hogwarts.\n",
+      
+      answer:true
+    },
+  
+    {
+      question:"--> Mad eye was the who put Harry’s\nname in the Goblet of Fire.\n",
+      
+      answer:false
+    }
+  
+  ]
+  
+  function level(ques,ans){
+    newAns=readlineSync.keyInYN(chalk.bold.red.bgYellowBright(ques));
+    
+    if (newAns===ans) {
+    // 'Y' key was pressed.
+    console.log(chalk.red("\nYou are right!\n"));
+    newScore++
+    // Do something...
+  } else {
+    // Another key was pressed.
+    console.log(chalk.blueBright("\nYou are wrong!\n"));
+    // Do something...
+  }
+  }
+  
+  for(var i=0;i<5;i++){
+  level(newQues[i].question,newQues[i].answer)
+  }
+  
+  console.log(chalk.yellowBright("Your final score is "+ newScore));
+  
+  if(newScore===5){
+    console.log(boxen(("You are a true Potterhead!"),{backgroundColor:"gray",borderstyle:"round",padding:1,borderColor:"yellow"}))
+  }
+  else{
+    console.log(boxen(("You are alomost there!\n\nLet\'s wave that wand\nand try again!!"),{backgroundColor:"gray",borderstyle:"round",padding:1,borderColor:"yellow"}))
+  }
+  
+  
+  
+  }
+  
+  
